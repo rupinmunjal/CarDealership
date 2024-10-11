@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Dealership Home</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css"> <!-- Link to external CSS for styling -->
+</head>
+<body th:style="'background-image: url(' + @{/images/img.jpg} + ');'"> <!-- Dynamically set background image -->
+    <div class="container">
+        <h1>Car Dealership</h1>
+        <hr>
+        
+        <!-- Link to the "Add Cars" page -->
+        <h2><a th:href="@{/insertCar}">Add Cars</a></h2>
+        <hr>
+        
+        <!-- Display table only if carList is not null or empty -->
+        <table th:if="${carList != null && !carList.isEmpty()}">
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Color</th>
+                <th>Mileage</th>
+            </tr>
+            <!-- Iterate over the carList and display each car's details in a row -->
+            <tr th:each="c : ${carList}">
+                <td th:text="${c.make}"></td> <!-- Car make -->
+                <td th:text="${c.model}"></td> <!-- Car model -->
+                <td th:text="${c.makeYear}"></td> <!-- Car manufacture year -->
+                <td th:text="${c.price}"></td> <!-- Car price -->
+                <td th:text="${c.color}"></td> <!-- Car color -->
+                <td th:text="${c.mileage}"></td> <!-- Car mileage -->
+                <!-- Link to delete the car by ID -->
+                <td><a th:href="@{/deleteCarById/{id}(id=${c.id})}">Delete</a></td>
+            </tr>
+        </table>
+        
+        <br><hr> <!-- Horizontal rule -->
+    </div>
+</body>
+</html>

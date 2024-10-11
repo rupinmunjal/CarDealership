@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Dealership Add Listings</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css"> <!-- Link to external CSS for styling -->
+</head>
+<body th:style="'background-image: url(' + @{/images/img.jpg} + ');'"> <!-- Dynamically set background image -->
+    <div class="container">
+        <h1>Car Dealership</h1>
+        <hr>
+        
+        <!-- Link to the car listing page -->
+        <h2><a th:href="@{/}">Cars</a></h2>
+        <hr>
+        
+        <!-- Form to add a new car, with fields bound to the car object -->
+        <form method="post" th:action="@{/insertCar}" th:object="${car}">
+            <!-- Hidden field for the car ID (if editing, not needed for a new car) -->
+            <input type="hidden" name="id" th:field="*{id}"/>
+            
+            <!-- Input fields bound to the car object attributes -->
+            Make: <input type="text" name="make" th:field="*{make}" /><br>
+            Model: <input type="text" name="model" th:field="*{model}" /><br>
+            Year: <input type="number" name="makeYear" th:field="*{makeYear}" /><br>
+            Price: <input type="number" name="price" th:field="*{price}" /><br>
+            Color: <input type="text" name="color" th:field="*{color}" /><br>
+            Mileage: <input type="number" name="mileage" th:field="*{mileage}" /><br>
+            
+            <!-- Submit button to save the car information -->
+            <input type="submit" value="Submit" />
+        </form>
+        
+        <br><hr> <!-- Horizontal rule -->
+    </div>
+</body>
+</html>

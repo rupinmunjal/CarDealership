@@ -1,0 +1,97 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Global body styling */
+body {
+    font-family: 'Roboto', Arial, sans-serif; /* Main font */
+    background-size: cover; /* Cover background */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Fixes background on scroll */
+    min-height: 100vh; /* Ensures full viewport height */
+    margin: 0;
+    padding: 0;
+    background-image: url('/img.jpg'); /* Background image */
+}
+
+/* Styling for the main container */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    color: #00ffff; /* Text color */
+}
+
+/* Main heading styling */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #fff; 
+    font-family: 'Montserrat', sans-serif; /* Heading font */
+}
+
+/* Subheading styling */
+h2 {
+    text-align: center;
+}
+
+/* Link styling */
+a {
+    text-decoration: none;
+    color: #007bff; /* Link color */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove gaps between cells */
+    margin-top: 20px;
+}
+
+/* Table header and data cell styling */
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd; /* Table cell border */
+}
+
+th {
+    background-color: #f2f2f2; /* Header background */
+}
+
+td {
+    background-color: #fff; /* Data cell background */
+}
+
+/* Input and button styling */
+input[type="text"], input[type="number"], input[type="submit"] {
+    width: calc(100% - 16px); /* Full width input with padding */
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Submit button specific styling */
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Button hover effect */
+}
+
+/* Horizontal rule styling */
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
