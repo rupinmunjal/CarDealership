@@ -1,8 +1,26 @@
-FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
-RUN mvn clean package -DskipTests
+# Use the latest Ubuntu image as the base for the build stage
+FROM ubuntu:latest AS build
 
-FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/PersonalProjectRupinMunjal-0.0.1-SNAPSHOT.jar demo.jar
+# Update the package lists
+RUN apt-get update
+
+# Install OpenJDK 21 and Maven
+RUN apt-get install openjdk-21-jdk maven -y
+
+# Copy the project files into the container
+COPY . .
+
+# Build the project using Maven
+RUN mvn clean package
+
+# Use a lightweight OpenJDK 21 image for the final stage
+FROM openjdk:21-jdk-slim
+
+# Expose the port the application runs on
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","demo.jar"]
+
+# Copy the built JAR file from the build stage to the final image
+COPY --from=build /target/PersonalProjectRupinMunjal-0.0.1-SNAPSHOT.jar app.jar
+
+# Set the entry point to run the JAR file
+ENTRYPOINT ["java", "-jar", "app.jar"]
